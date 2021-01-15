@@ -1,33 +1,36 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - E_Players_AspNETCore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2faae0d38b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/style.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E_Players_AspNETCore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="container cabecalho">
+            <div>
+
+                <a href="#" onclick="botaoMenu()">
+                    <i class="fas fa-bars"></i>
+                </a>
+
+                <a asp-area="" asp-controller"Home" asp-action"Index">
+                    <img src="~/Images/Logo.svg" alt="Logo do site E-Players">
+                </a>
             </div>
-        </nav>
+            <nav id="menu">
+                <ul>
+                    <li><a asp-area="" asp-controller"Home" asp-action"Index" title="voltar para a página inicial">INÍCIO</a></li>
+                    <li><a href="#horarios" title="Ir até a sessão de horários das partidas">HORÁRIOS</a></li>
+                    <li><a href="#resultados" title="Ir até a sessão de resultados das partidas">RESULTADOS</a></li>
+                    <li><a href="#noticias" title="Ir até a sessão de notícias">NOTÍCIAS</a></li>
+                    <li><a href="#" title="buscar conteudo no site"><i class="fas fa-search"></i></a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -35,10 +38,39 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2021 - E_Players_AspNETCore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div>
+                <h5>INSTITUCIONAL</h5>
+                <nav>
+                    <ul>
+                        <li><a href="#">Fale Conosco</a></li>
+                        <li><a href="#">Regras</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Anuncie</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mob_logo_sociais">
+                <img src="~/Images/Logo.svg" alt="Logo do projeto E-Players">
+                <div class="sociais">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-youtube-square"></i>
+                </div>
+            </div>
+            <div>
+                <h5>PRINCIPAIS LIGAS</h5>
+                <h6>LIGA CBL</h6>
+                <h6>LIGA LCK</h6>
+                <h6>LIGA PROFISSIONAL</h6>
+                <h6>LIGA WCG</h6>
+            </div>
         </div>
+        <p>© Copyrigth 2077 - Todos os direitos reservados ao sena-code</p>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
