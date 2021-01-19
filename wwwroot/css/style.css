@@ -38,6 +38,10 @@ ul{
     list-style-type: none;
 }
 
+.erro{
+    color: #fc1e8b;
+}
+
 .cabecalho{
     display: flex;
     justify-content: space-around;
@@ -354,6 +358,11 @@ table td, table th{
 
 table img{
     max-width: 50px;
+}
+
+table a{
+    color: var(--pink);
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1200px){

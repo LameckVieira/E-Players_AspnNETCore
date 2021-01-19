@@ -5,7 +5,7 @@ using E_Players_AspNETCore.Interfaces;
 
 namespace E_Players_AspNETCore.Models
 {
-    public class Equipe : EplayersBase , IEquipe
+    public class Equipe : EPlayersBase , IEquipe
     {
         public int IdEquipe { get; set; }
         public string Nome { get; set; }
@@ -13,70 +13,79 @@ namespace E_Players_AspNETCore.Models
 
         private const string PATH = "Database/equipe.csv";
 
+        /// <summary>
+        /// Método construtor que cria os arquivos e pastas caso não existam
+        /// </summary>
         public Equipe()
         {
             CreateFolderAndFile(PATH);
         }
 
+        /// <summary>
+        /// Adiciona uma Equipe ao CSV
+        /// </summary>
+        /// <param name="e"></param>
         public void Create(Equipe e)
         {
-            // Preparamos um array de string para o metodo AppendAllLines
-            string[] linha = { Prepare(e) };
-            // Acrescentamos nova linha 
+            string[] linha = { PrepararLinha(e) };
             File.AppendAllLines(PATH, linha);
         }
-        // Criamos o método para preparar a linha do CSV
-        private string Prepare(Equipe e)
+
+        /// <summary>
+        /// Prepara a linha para a estrutura do objeto Equipe
+        /// </summary>
+        /// <param name="e">Objeto "Equipe"</param>
+        /// <returns>Retorna a linha em formato de .csv</returns>
+        private string PrepararLinha(Equipe e)
         {
             return $"{e.IdEquipe};{e.Nome};{e.Imagem}";
         }
 
-        public void Delete(int id)
+        /// <summary>
+        /// Exclui uma Equipe
+        /// </summary>
+        /// <param name="idEquipe"></param>
+        public void Delete(int idEquipe)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
-            // 2;SNK;snk.jpg
-            // Removemos as linhas com o codigo comparado
-            // To String -> converte para texto (string)
-            linhas.RemoveAll(x => x.Split(";")[0] == id.ToString());
-            //Reescrevemos o CSV com a lista alterada
+            // 1;FLA;fla.png
+            linhas.RemoveAll(x => x.Split(";")[0] == idEquipe.ToString());                        
             RewriteCSV(PATH, linhas);
         }
 
+        /// <summary>
+        /// Lê todos as linhas do csv
+        /// </summary>
+        /// <returns>Lista de Equipes</returns>
         public List<Equipe> ReadAll()
         {
             List<Equipe> equipes = new List<Equipe>();
-
-            // Lemos todos as linhas do CSV
             string[] linhas = File.ReadAllLines(PATH);
 
-            foreach (string item in linhas)
+            foreach (var item in linhas)
             {
-                // 1;Vivokeyd;vivo.jpg
-                // [0] = 1
-                // [1] = vivoKeud
-                // [2] = vivo.jpg
-
                 string[] linha = item.Split(";");
-                Equipe novaEquipe = new Equipe();
-                novaEquipe.IdEquipe = Int32.Parse(linha[0]);
-                novaEquipe.Nome   = linha[1];
-                novaEquipe.Imagem = linha[2];
 
-                equipes.Add(novaEquipe);
+                Equipe equipe = new Equipe();
+                equipe.IdEquipe = Int32.Parse(linha[0]);
+                equipe.Nome = linha[1];
+                equipe.Imagem = linha[2];
+
+                equipes.Add(equipe);
             }
             return equipes;
         }
 
+        /// <summary>
+        /// Altera uma Equipe
+        /// </summary>
+        /// <param name="e">Equipe alterada</param>
         public void Update(Equipe e)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
-            // 2;SNK;snk.jpg
-            // Removemos as linhas com o codigo comparado
             linhas.RemoveAll(x => x.Split(";")[0] == e.IdEquipe.ToString());
-            // Add nas linhas a equipe alterada
-            linhas.Add( Prepare(e) );
-            //Reescrevemos o CSV com a lista alterada
-            RewriteCSV(PATH, linhas);
+            linhas.Add( PrepararLinha(e) );                        
+            RewriteCSV(PATH, linhas); 
         }
     }
 }

@@ -5,13 +5,13 @@ namespace E_Players_AspNETCore.Interfaces
 {
     public interface IEquipe
     {
-        // Método de CRUD - Contrato
+        //Criar
         void Create(Equipe e);
-
+        //Ler
         List<Equipe> ReadAll();
-
+        //Alterar
         void Update(Equipe e);
-
-        void Delete(int id);
+        //Excluir
+        void Delete(int idEquipe);
     }
 }

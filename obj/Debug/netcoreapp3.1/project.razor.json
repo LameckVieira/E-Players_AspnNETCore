@@ -14407,8 +14407,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Lameck\\Desktop\\C#\\E-Players_AspnNETCore\\Views\\Jogador\\Index.cshtml",
+      "TargetPath": "Views\\Jogador\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Lameck\\Desktop\\C#\\E-Players_AspnNETCore\\Views\\Equipe\\Index.cshtml",
       "TargetPath": "Views\\Equipe\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Lameck\\Desktop\\C#\\E-Players_AspnNETCore\\Views\\Login\\Index.cshtml",
+      "TargetPath": "Views\\Login\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

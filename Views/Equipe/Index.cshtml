@@ -2,43 +2,49 @@
 @{
     ViewData["Title"] = "Equipes";
 }
+
 <div class="titulo_pagina">
-    <h1>cadastro de equipe</h1>
+    <h1>cadastro de @ViewData["Title"]</h1>
 </div>
 
-<form method="POST" action='@Url.Action("Cadastrar")' enctype="multipart/form-data" class="cadastro">
+<form class="cadastro" action="@Url.Action("Cadastrar")" method="post" enctype="multipart/form-data" >
+    
     <div class="campo">
-        <label for="IdEquipe">ID</label>
-        <input type="text" name="IdEquipe" id="IdEquipe" />
-    </div>
+        <label for="IdEquipe">IdEquipe</label>
+        <input type="text" name="IdEquipe" id="IdEquipe">
+    </div>    
 
-    <div class="campo">            
+    <div class="campo">
         <label for="Nome">Nome</label>
-        <input type="text" name="Nome" id="Nome" />
+        <input type="text" name="Nome" id="Nome">
     </div>
 
     <div class="campo">
         <label for="Imagem">Imagem</label>
-        <input type="file" name="Imagem" for="Imagem" />
+        <input type="file" name="Imagem" id="Imagem">
     </div>
 
     <button class="gradient btn" type="submit">Cadastrar</button>
 </form>
 
 
-<table class="table table-striped table-responsive">
+<table class="table table-responsive table-striped">
     <thead>
-        <th>ID</th>
+        <th>Id</th>
         <th>Nome</th>
-        <th>Foto</th>
+        <th>Imagem</th>
+        <th>Ações</th>
     </thead>
     <tbody>
-        @foreach(Equipe equipe in ViewBag.Equipes){
+        @foreach (var item in ViewBag.Equipes)
+        {
             <tr>
-                <td>@equipe.IdEquipe</td>
-                <td>@equipe.Nome</td>
-                <td><img src="/img/Equipes/@equipe.Imagem" alt="imagem da equipe @equipe.Nome" width="40"></td>
-                <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir" asp-route-id="@equipe.IdEquipe">Excluir</a></td>
+                <td>@item.IdEquipe</td>
+                <td>@item.Nome</td>
+                <td>
+                    <img src="img/Equipes/@item.Imagem" alt="Imagem da equipe @item.Nome" />
+                </td>
+                <td><a asp-area="Link para excluir um jogador" asp-controller="Equipe" asp-action="Excluir" asp-route-id="@item.IdEquipe">Excluir</a></td>
             </tr>
         }
     </tbody>
